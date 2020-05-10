@@ -119,7 +119,8 @@ label_value = ['Excellent','Good','Average','Bad']
 percentage = {"O":"90%","A+":"90%","A":"80%","B+":"70%","AB":"0%","B":"60%","C":"50%","p":"40%","P":"40%","F":"0%","ND":"50%-80%"}
 course = ['0','0','0','0','0','0']
 course_name = ['PCM','PCB','MCB','PCSE','PCSM']
-data3 = [{}]
+att-science = [{}]
+att-arts = [{}]
 data_arts =[{}]
 model = []
 model1 = '0'
@@ -133,7 +134,7 @@ arts = 0
 @app.route('/form', methods=['GET','POST'])
 def makecalc():
     if request.method == 'POST':
-        global data3
+        global att-science
         data3
         data = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
         req = request.get_json()
@@ -155,21 +156,21 @@ def makecalc():
             course[count] = percentage[pr[0]]
             #print(course)
             count +=1
-        data3 = [{'id':1,'name':'PCM','r':course[0]},{'id':2,'name':'PCB','r':course[1]},
-                {'id':3,'name':'MCB','r':course[2]},{'id':4,'name':'PCSE','r':course[3]},
-                {'id':5,'name':'PCSM','r':course[4]}]
+        att-science = [{'id':1,'name':'PCM','r':course[0]},{'id':2,'name':'PCB','r':course[1]},
+                       {'id':3,'name':'MCB','r':course[2]},{'id':4,'name':'PCSE','r':course[3]},
+                       {'id':5,'name':'PCSM','r':course[4]}]
         #print(data3)
         #print(send_data)
         return ''
     else:
-        print(data3)
-        return jsonify(data3)
+        print(att-science)
+        return jsonify(att-science)
 
 @app.route('/form_arts', methods=['GET','POST'])
 def form_arts():
     if request.method == 'POST':
         global data_arts
-        global data3
+        global att-arts
         data = []
         data1 = []
         sub_name = ['','','','','',''] 
@@ -201,7 +202,7 @@ def form_arts():
             p = cart.predict(data1)
             print(p[0])
             course[i] = percentage[p[0]]
-        data3 = [{'id':1,'name':'Hindi','r':course[0]},{'id':2,'name':'History','r':course[1]},
+        att-arts = [{'id':1,'name':'Hindi','r':course[0]},{'id':2,'name':'History','r':course[1]},
                 {'id':3,'name':'Political science','r':course[2]},{'id':4,'name':'Portuguese','r':course[3]},
                 {'id':5,'name':'Economics','r':course[4]},{'id':6,'name':'English','r':course[5]},
                  {'id':7,'name':'Marathi','r':course[6]},
@@ -211,7 +212,7 @@ def form_arts():
         #print(send_data)
         return ''
     else:
-        return jsonify(data3)
+        return jsonify(att-arts)
     
 @app.route('/black', methods=['GET','POST'])
 def  att():
