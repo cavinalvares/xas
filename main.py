@@ -146,6 +146,10 @@ def makecalc():
                 if(dictn['name'] == req['name'+str(i+1)]):
                     data[0][j] = int(req['value'+str(i+1)])
         count = 0
+        print(course_name)
+        for i in course_name:
+              modelfile = './templates/'+i+'.pickle'
+              model.append(p.load(open(modelfile, 'rb')))
         for m in model:
             p = m.predict(data)
             course[count] = percentage[p[0]]
@@ -713,7 +717,4 @@ def  fac_next_arts():
       #site-menu-toggle js-menu-toggle   
 
 if __name__ == '__main__':
-    for i in course_name:
-        modelfile = './templates/'+i+'.pickle'
-        model.append(p.load(open(modelfile, 'rb')))
     app.run()
