@@ -715,5 +715,4 @@ if __name__ == '__main__':
     for i in course_name:
         modelfile = './templates/'+i+'.pickle'
         model.append(p.load(open(modelfile, 'rb')))
-    app.run(debug=True)
-#host='192.168.43.43'
+    app.run()
