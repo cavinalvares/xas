@@ -151,8 +151,8 @@ def makecalc():
               modelfile = './templates/'+i+'.pickle'
               model.append(p.load(open(modelfile, 'rb')))
         for m in model:
-            p = m.predict(data)
-            course[count] = percentage[p[0]]
+            pr = m.predict(data)
+            course[count] = percentage[pr[0]]
             #print(course)
             count +=1
         data3 = [{'id':1,'name':'PCM','r':course[0]},{'id':2,'name':'PCB','r':course[1]},
