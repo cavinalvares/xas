@@ -157,7 +157,8 @@ def makecalc():
         #print(data3)
         #print(send_data)
         return ''
-    else: 
+    else:
+        print(data3)
         return jsonify(data3)
 
 @app.route('/form_arts', methods=['GET','POST'])
