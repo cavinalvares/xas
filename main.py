@@ -134,7 +134,6 @@ arts = 0
 @app.route('/form', methods=['GET','POST'])
 def makecalc():
     if request.method == 'POST':
-        global att-science
         data3
         data = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
         req = request.get_json()
@@ -170,7 +169,6 @@ def makecalc():
 def form_arts():
     if request.method == 'POST':
         global data_arts
-        global att-arts
         data = []
         data1 = []
         sub_name = ['','','','','',''] 
