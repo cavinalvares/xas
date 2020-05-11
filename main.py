@@ -129,7 +129,7 @@ log = ''
 fnm = ''
 science = 0
 arts = 0
-
+d = [{}]
 
 @app.route('/form', methods=['GET','POST'])
 def makecalc():
