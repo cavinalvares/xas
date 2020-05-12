@@ -368,7 +368,6 @@ def fac_desk():
         
 @app.route('/fac_sub', methods=['GET'])
 def fac_sub():
-    global fnm
     df = pd.read_csv('./templates/attendance.csv')
     lst = df[df['fnm']==fnm]['SubName'].unique()
     #print(lst)
@@ -404,7 +403,6 @@ def fac_sub():
 
 @app.route('/fac_sub_arts', methods=['GET'])
 def fac_sub_arts():
-    global fnm
     df = pd.read_csv('./templates/attendance_arts.csv')
     lst = df[df['fnm']==fnm]['SubName'].unique()
     #print(lst)
@@ -441,7 +439,6 @@ def fac_sub_arts():
 
 @app.route('/fac_fac', methods=['GET'])
 def fac_fac():
-    global fnm
     df = pd.read_csv('./templates/attendance.csv')
     lst = df[df['fnm']==fnm]['SubName'].unique()
     #print(lst)
@@ -477,7 +474,6 @@ def fac_fac():
 
 @app.route('/fac_fac_arts', methods=['GET'])
 def fac_fac_arts():
-    global fnm
     df = pd.read_csv('./templates/attendance_arts.csv')
     lst = df[df['fnm']==fnm]['SubName'].unique()
     #print(lst)
