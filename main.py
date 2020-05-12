@@ -362,7 +362,7 @@ def fac_desk():
         arts = int(fac_ar)
         return jsonify([{"id":1,'name':fnm,"access":"true","pass":"true",}])
     else:
-        print(fnm,"\n",science,"\n",arts,'\n',fnm2)
+        print(fnm,"\n",science,"\n",arts)
         d = [{'name':fnm,"science":science,"arts":arts}]
         return jsonify(d)
         
