@@ -368,6 +368,8 @@ def fac_desk():
         
 @app.route('/fac_sub', methods=['GET'])
 def fac_sub():
+    global fnm
+    fnm2 = fnm
     df = pd.read_csv('./templates/attendance.csv')
     lst = df[df['fnm']==fnm]['SubName'].unique()
     #print(lst)
@@ -399,10 +401,13 @@ def fac_sub():
         send_data.append({'id':k,'name':i,'data':v})
         k=k+1
     print(send_data)
+    fnm = fnm2
     return jsonify(send_data)
 
 @app.route('/fac_sub_arts', methods=['GET'])
 def fac_sub_arts():
+    global fnm
+    fnm2 = fnm
     df = pd.read_csv('./templates/attendance_arts.csv')
     lst = df[df['fnm']==fnm]['SubName'].unique()
     #print(lst)
@@ -434,11 +439,14 @@ def fac_sub_arts():
         send_data.append({'id':k,'name':i,'data':v})
         k=k+1
     print(send_data)
+    fnm = fnm2
     return jsonify(send_data)
 
 
 @app.route('/fac_fac', methods=['GET'])
 def fac_fac():
+    global fnm
+    fnm2 = fnm
     df = pd.read_csv('./templates/attendance.csv')
     lst = df[df['fnm']==fnm]['SubName'].unique()
     #print(lst)
@@ -470,10 +478,13 @@ def fac_fac():
         send_data.append({'id':k,'name':i,'data':v})
         k=k+1
     print(send_data)
+    fnm = fnm2
     return jsonify(send_data)
 
 @app.route('/fac_fac_arts', methods=['GET'])
 def fac_fac_arts():
+    global fnm
+    fnm2 = fnm
     df = pd.read_csv('./templates/attendance_arts.csv')
     lst = df[df['fnm']==fnm]['SubName'].unique()
     #print(lst)
@@ -505,6 +516,7 @@ def fac_fac_arts():
         send_data.append({'id':k,'name':i,'data':v})
         k=k+1
     print(send_data)
+    fnm = fnm2
     return jsonify(send_data)
 
         
@@ -658,6 +670,7 @@ def pal_fac_arts():
 def  fac_next():
     global log
     global fnm
+    fnm2 = fnm
     att = pd.read_csv('./templates/eval_faculty.csv')
     st = att[att['fnm']==fnm][['june','july','august']]
     val = st.values
@@ -680,13 +693,14 @@ def  fac_next():
             p1[0][0] = 0
         lst.append(p1[0][0])
         send_data = [{'id':1,'month':lst}]
-    
+    fnm = fnm2
     return jsonify(send_data)
 
 @app.route('/fac_next_arts', methods=['GET'])
 def  fac_next_arts():
     global log
     global fnm
+    fnm2 = fnm
     att = pd.read_csv('./templates/eval_faculty_arts2.csv')
     st = att[att['fnm']==fnm][['june','july','august']]
     val = st[["august"]].values
@@ -707,7 +721,7 @@ def  fac_next_arts():
             p1[0][0] = 0
         lst.append(p1[0][0])
         send_data = [{'id':1,'month':lst}]
-    
+    fnm = fnm2
     return jsonify(send_data)
            
       #site-menu-toggle js-menu-toggle   
