@@ -336,7 +336,7 @@ def fac_desk():
         global fnm
         global science
         global arts
-        
+        fnm = None
         log = req['name']
         pas = req['pass']
         att = pd.read_csv('./templates/faculty_name.csv')
