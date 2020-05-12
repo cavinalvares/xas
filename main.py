@@ -329,7 +329,6 @@ def pal_black_arts():
 
 @app.route('/fac_desk', methods=['POST','GET'])
 def fac_desk():
-    fnm2 = ''
     if request.method == 'POST':
         req = request.get_json()
         req = req['roll']
@@ -352,7 +351,7 @@ def fac_desk():
         
         fnm = st.values[0][0]
 
-        fnm2 = fnm
+       
         sc = pd.read_csv('./templates/eval_faculty.csv')
         ar = pd.read_csv('./templates/eval_faculty_arts2.csv')
         
@@ -363,7 +362,6 @@ def fac_desk():
         arts = int(fac_ar)
         return jsonify([{"id":1,'name':fnm,"access":"true","pass":"true",}])
     else:
-        fnm = fnm2
         print(fnm,"\n",science,"\n",arts,'\n',fnm2)
         d = [{'name':fnm,"science":science,"arts":arts}]
         return jsonify(d)
