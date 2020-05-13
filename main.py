@@ -135,8 +135,8 @@ class fac_login:
         self.fnm = fnm
         self.science = science
         self.arts = arts
-    def send():
-        return jsonify([{'name':fnm,"science":science,"arts":arts}])
+    def send(self):
+        return jsonify([{'name':self.fnm,"science":self.science,"arts":self.arts}])
 
 fac_log = fac_login('',0,0)
 
