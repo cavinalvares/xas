@@ -367,8 +367,9 @@ def fac_desk():
         
         return jsonify([{"id":1,'name':fnm,"access":"true","pass":"true",}])
     else:
+        log_fac = pd.read_csv('./login.csv')
         print(fnm,"\n",science,"\n",arts)
-        d = [{'name':fnm,"science":science,"arts":arts}]
+        d = [{'name':log_fac["name"],"science":log_fac["science"],"arts":log_fac["arts"]}]
         return jsonify(d)
         
         
