@@ -405,9 +405,8 @@ def fac_sub():
 @app.route('/fac_sub_arts', methods=['GET'])
 def fac_sub_arts():
     log_fac = pd.read('./login.csv')
-    fnm = log_fac['name'][0]
     df = pd.read_csv('./templates/attendance_arts.csv')
-    lst = df[df['fnm']==fnm]['SubName'].unique()
+    lst = df[df['fnm']==log_fac['name'][0]]['SubName'].unique()
     #print(lst)
     aug = pd.read_csv('./templates/aug_sub_liking_arts.csv')
     send_data = []
@@ -443,16 +442,15 @@ def fac_sub_arts():
 @app.route('/fac_fac', methods=['GET'])
 def fac_fac():
     log_fac = pd.read('./login.csv')
-    fnm = log_fac['name'][0]
     df = pd.read_csv('./templates/attendance.csv')
-    lst = df[df['fnm']==fnm]['SubName'].unique()
+    lst = df[df['fnm']==log_fac['name'][0]]['SubName'].unique()
     #print(lst)
     aug = pd.read_csv('./templates/aug_fac_liking.csv')
     send_data = []
     k=0
     
     for i in lst:
-        sub = aug[(aug['SubName']==i)&(aug['per_lect']!=0)&(aug['fnm']==fnm)].drop(columns=['studrollno','SubName'])
+        sub = aug[(aug['SubName']==i)&(aug['per_lect']!=0)&(aug['fnm']==log_fac["name"][0])].drop(columns=['studrollno','SubName'])
         kmean = KMeans(n_clusters = 4)
         kmean.fit( sub[['per_lect']])
         sub['aug_eval'] = kmean.labels_
@@ -480,16 +478,15 @@ def fac_fac():
 @app.route('/fac_fac_arts', methods=['GET'])
 def fac_fac_arts():
     log_fac = pd.read('./login.csv')
-    fnm = log_fac['name'][0]
     df = pd.read_csv('./templates/attendance_arts.csv')
-    lst = df[df['fnm']==fnm]['SubName'].unique()
+    lst = df[df['fnm']==log_fac["name"][0]]['SubName'].unique()
     #print(lst)
     aug = pd.read_csv('./templates/aug_fac_liking_arts.csv')
     send_data = []
     k=0
     
     for i in lst:
-        sub = aug[(aug['SubName']==i)&(aug['per_lect']!=0)&(aug['fnm']==fnm)].drop(columns=['studrollno','SubName'])
+        sub = aug[(aug['SubName']==i)&(aug['per_lect']!=0)&(aug['fnm']==log_fac["name"][0])].drop(columns=['studrollno','SubName'])
         kmean = KMeans(n_clusters = 4)
         kmean.fit( sub[['per_lect']])
         sub['aug_eval'] = kmean.labels_
@@ -664,9 +661,8 @@ def pal_fac_arts():
 @app.route('/fac_next', methods=['GET'])
 def  fac_next():
     log_fac = pd.read('./login.csv')
-    fnm = log_fac['name'][0]
     att = pd.read_csv('./templates/eval_faculty.csv')
-    st = att[att['fnm']==fnm][['june','july','august']]
+    st = att[att['fnm']==log_fac["name"][0]][['june','july','august']]
     val = st.values
     send_data = [{}]
     modelfile = './templates/lr.pickle'
@@ -692,9 +688,8 @@ def  fac_next():
 @app.route('/fac_next_arts', methods=['GET'])
 def  fac_next_arts():
     log_fac = pd.read('./login.csv')
-    fnm = log_fac['name'][0]
     att = pd.read_csv('./templates/eval_faculty_arts2.csv')
-    st = att[att['fnm']==fnm][['june','july','august']]
+    st = att[att['fnm']==log_fac["name"][0]][['june','july','august']]
     val = st[["august"]].values
     send_data = [{}]
     modelfile = './templates/lr_arts.pickle'
