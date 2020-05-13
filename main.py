@@ -331,7 +331,6 @@ def fac_desk():
         req = request.get_json()
         req = req['roll']
         global log
-        fnm = None
         log = req['name']
         pas = req['pass']
         att = pd.read_csv('./templates/faculty_name.csv')
