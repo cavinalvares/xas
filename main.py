@@ -362,7 +362,7 @@ def fac_desk():
         arts = int(fac_ar)
         
         data = [[fnm, science,arts]]
-        df = pd.DataFrame(data, columns = ["name", "science", arts])
+        df = pd.DataFrame(data, columns = ["name", "science", "arts"])
         df.to_csv("login.csv")
         
         return jsonify([{"id":1,'name':fnm,"access":"true","pass":"true",}])
