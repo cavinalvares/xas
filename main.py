@@ -368,7 +368,7 @@ def fac_desk():
         
 @app.route('/fac_sub', methods=['GET'])
 def fac_sub():
-    log_fac = pd.read_csv(./login.csv)
+    log_fac = pd.read_csv('./login.csv')
     df = pd.read_csv('./templates/attendance.csv')
     lst = df[df['fnm']==log_fac["name"][0]]['SubName'].unique()
     #print(lst)
