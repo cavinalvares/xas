@@ -331,9 +331,6 @@ def fac_desk():
         req = request.get_json()
         req = req['roll']
         global log
-        global fnm
-        global science
-        global arts
         fnm = None
         log = req['name']
         pas = req['pass']
