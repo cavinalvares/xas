@@ -130,6 +130,15 @@ fnm = ''
 science = 0
 arts = 0
 
+class fac_login:
+    def __init__(self,fnm,science,arts):
+        self.fnm = fnm
+        self.science = science
+        self.arts = arts
+    def send():
+        return jsonify([{'name':fnm,"science":science,"arts":arts}])
+
+fac_login fac_log = new fac_login('',0,0)
 
 @app.route('/form', methods=['GET','POST'])
 def makecalc():
@@ -360,11 +369,16 @@ def fac_desk():
         print(fac_sc)
         science = int(fac_sc)
         arts = int(fac_ar)
+
+        fac_log.fnm = fnm
+        fac_log.science = science
+        fac_log.arts = arts
+
         return jsonify([{"id":1,'name':fnm,"access":"true","pass":"true",}])
     else:
         print(fnm,"\n",science,"\n",arts)
-        d = [{'name':fnm,"science":science,"arts":arts}]
-        return jsonify(d)
+        #d = [{'name':fnm,"science":science,"arts":arts}]
+        return fac_log.send()
         
         
 @app.route('/fac_sub', methods=['GET'])
