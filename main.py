@@ -138,7 +138,7 @@ class fac_login:
     def send():
         return jsonify([{'name':fnm,"science":science,"arts":arts}])
 
-fac_login fac_log = new fac_login('',0,0)
+fac_log = fac_login('',0,0)
 
 @app.route('/form', methods=['GET','POST'])
 def makecalc():
