@@ -126,9 +126,7 @@ model = []
 model1 = '0'
 ack = []
 log = ''
-fnm = ''
-science = 0
-arts = 0
+
 
 
 @app.route('/form', methods=['GET','POST'])
@@ -375,8 +373,9 @@ def fac_desk():
         
 @app.route('/fac_sub', methods=['GET'])
 def fac_sub():
+    log_fac = pd.read_csv(./login.csv)
     df = pd.read_csv('./templates/attendance.csv')
-    lst = df[df['fnm']==fnm]['SubName'].unique()
+    lst = df[df['fnm']==log_fac["name"][0]]['SubName'].unique()
     #print(lst)
     aug = pd.read_csv('./templates/aug_sub_liking.csv')
     send_data = []
@@ -410,6 +409,8 @@ def fac_sub():
 
 @app.route('/fac_sub_arts', methods=['GET'])
 def fac_sub_arts():
+    log_fac = pd.read('./login.csv')
+    fnm = log_fac['name'][0]
     df = pd.read_csv('./templates/attendance_arts.csv')
     lst = df[df['fnm']==fnm]['SubName'].unique()
     #print(lst)
@@ -446,6 +447,8 @@ def fac_sub_arts():
 
 @app.route('/fac_fac', methods=['GET'])
 def fac_fac():
+    log_fac = pd.read('./login.csv')
+    fnm = log_fac['name'][0]
     df = pd.read_csv('./templates/attendance.csv')
     lst = df[df['fnm']==fnm]['SubName'].unique()
     #print(lst)
@@ -481,6 +484,8 @@ def fac_fac():
 
 @app.route('/fac_fac_arts', methods=['GET'])
 def fac_fac_arts():
+    log_fac = pd.read('./login.csv')
+    fnm = log_fac['name'][0]
     df = pd.read_csv('./templates/attendance_arts.csv')
     lst = df[df['fnm']==fnm]['SubName'].unique()
     #print(lst)
@@ -663,7 +668,8 @@ def pal_fac_arts():
 
 @app.route('/fac_next', methods=['GET'])
 def  fac_next():
-    global log
+    log_fac = pd.read('./login.csv')
+    fnm = log_fac['name'][0]
     att = pd.read_csv('./templates/eval_faculty.csv')
     st = att[att['fnm']==fnm][['june','july','august']]
     val = st.values
@@ -690,7 +696,8 @@ def  fac_next():
 
 @app.route('/fac_next_arts', methods=['GET'])
 def  fac_next_arts():
-    global log
+    log_fac = pd.read('./login.csv')
+    fnm = log_fac['name'][0]
     att = pd.read_csv('./templates/eval_faculty_arts2.csv')
     st = att[att['fnm']==fnm][['june','july','august']]
     val = st[["august"]].values
