@@ -153,13 +153,20 @@ def makecalc():
             course[count] = percentage[pr[0]]
             #print(course)
             count +=1
-        att_science = [{'id':1,'name':'PCM','r':course[0]},{'id':2,'name':'PCB','r':course[1]},
+        '''att_science = [{'id':1,'name':'PCM','r':course[0]},{'id':2,'name':'PCB','r':course[1]},
                        {'id':3,'name':'MCB','r':course[2]},{'id':4,'name':'PCSE','r':course[3]},
-                       {'id':5,'name':'PCSM','r':course[4]}]
+                       {'id':5,'name':'PCSM','r':course[4]}]'''
         #print(data3)
+        data = [[course[0],course[1],course[2],course[3],course[4]]]
+        df = pd.DataFrame(data, columns = ['r1','r2','r3','r4','r5'])
+        df.to_csv("science_form.csv")
         print(att_science)
         return ''
     else:
+        course = pd.read_csv("./science_form.csv")
+        att_science = [{'id':1,'name':'PCM','r':course[0][0]},{'id':2,'name':'PCB','r':course[1][0]},
+                       {'id':3,'name':'MCB','r':course[2][0]},{'id':4,'name':'PCSE','r':course[3][0]},
+                       {'id':5,'name':'PCSM','r':course[4][0]}]
         print(att_science)
         return jsonify(att_science)
 
