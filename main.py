@@ -157,7 +157,7 @@ def makecalc():
                        {'id':3,'name':'MCB','r':course[2]},{'id':4,'name':'PCSE','r':course[3]},
                        {'id':5,'name':'PCSM','r':course[4]}]
         #print(data3)
-        #print(send_data)
+        print(att_science)
         return ''
     else:
         print(att_science)
