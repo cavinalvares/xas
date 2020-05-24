@@ -206,16 +206,27 @@ def form_arts():
             p = cart.predict(data1)
             print(p[0])
             course[i] = percentage[p[0]]
-        att_arts = [{'id':1,'name':'Hindi','r':course[0]},{'id':2,'name':'History','r':course[1]},
+        '''att_arts = [{'id':1,'name':'Hindi','r':course[0]},{'id':2,'name':'History','r':course[1]},
                 {'id':3,'name':'Political science','r':course[2]},{'id':4,'name':'Portuguese','r':course[3]},
                 {'id':5,'name':'Economics','r':course[4]},{'id':6,'name':'English','r':course[5]},
                  {'id':7,'name':'Marathi','r':course[6]},
                  {'id':8,'name':'Konkani','r':course[7]},{'id':9,'name':'Psychology','r':course[8]},
-                 {'id':10,'name':'Philosophy','r':course[9]},{'id':11,'name':'Sociology','r':course[10]}]
+                 {'id':10,'name':'Philosophy','r':course[9]},{'id':11,'name':'Sociology','r':course[10]}]'''
+        
+        data = [[course[0],course[1],course[2],course[3],course[4],course[5],course[6],course[7],course[8],course[9],course[10]]]
+        df = pd.DataFrame(data, columns = ['r1','r2','r3','r4','r5','r6','r7','r8','r9','r10','r11'])
+        df.to_csv("arts_form.csv")
         #print(data3)
         #print(send_data)
         return ''
     else:
+        courses = pd.read_csv('./arts_form.csv')
+        att_arts = [{'id':1,'name':'Hindi','r':courses['r1'][0]},{'id':2,'name':'History','r':courses['r2'][0]},
+                {'id':3,'name':'Political science','r':courses['r3'][0]},{'id':4,'name':'Portuguese','r':courses['r4'][0]},
+                {'id':5,'name':'Economics','r':courses['r5'][0]},{'id':6,'name':'English','r':courses['r6'][0]},
+                {'id':7,'name':'Marathi','r':courses['r7'][0]},
+                {'id':8,'name':'Konkani','r':courses['r8'][0]},{'id':9,'name':'Psychology','r':courses['r9'][0]},
+                {'id':10,'name':'Philosophy','r':courses['r10'][0]},{'id':11,'name':'Sociology','r':courses['r11'][0]}]
         return jsonify(att_arts)
     
 @app.route('/black', methods=['GET','POST'])
