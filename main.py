@@ -163,7 +163,7 @@ def makecalc():
         print(att_science)
         return ''
     else:
-        course = pd.read_csv("./science_form.csv")
+        course = pd.read_csv('./science_form.csv')
         att_science = [{'id':1,'name':'PCM','r':course[0][0]},{'id':2,'name':'PCB','r':course[1][0]},
                        {'id':3,'name':'MCB','r':course[2][0]},{'id':4,'name':'PCSE','r':course[3][0]},
                        {'id':5,'name':'PCSM','r':course[4][0]}]
